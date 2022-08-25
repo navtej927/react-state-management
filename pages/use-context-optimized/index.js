@@ -48,7 +48,7 @@ const CounterUseState = () => {
   return (
     <div>
       <Counter />
-      <AddOneBttn />
+      <Container />
       <DisplayUser />
       <Form />
     </div>
