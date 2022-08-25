@@ -2,15 +2,15 @@ import React, { useCallback, useState } from "react";
 import { createContext, useContextSelector } from "use-context-selector";
 
 const useStore = () => {
-    const [user, setUser] = useState("");
+  const [user, setUser] = useState("");
   const [count, setCount] = useState(0);
-  
+
   return {
     count,
     user,
     increment: useCallback(() => setCount((v) => v + 1), []),
-    login: useCallback(() => setUser("Navtej"), []),
-    logOut: useCallback(() => setUser(""), []),
+    login: () => setUser("Navtej"),
+    logOut: () => setUser(""),
   };
 };
 
@@ -21,9 +21,9 @@ export const MyContextProvider = ({ children }) => {
 };
 
 // This is added to refer the values easily
-
 export const useCount = () => useContextSelector(MyContext, (s) => s.count);
-export const useIncrement = () => useContextSelector(MyContext, (s) => s.increment);
+export const useIncrement = () =>
+  useContextSelector(MyContext, (s) => s.increment);
 export const useUser = () => useContextSelector(MyContext, (s) => s.user);
 export const useLogin = () => useContextSelector(MyContext, (s) => s.login);
 export const useLogout = () => useContextSelector(MyContext, (s) => s.logOut);
