@@ -4,6 +4,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       return state + 1;
+    case "SUB":
+      return state - 1;
     default:
       return state;
   }
@@ -52,7 +54,12 @@ const Form = ({ setUser, user }) => {
 };
 
 const Container = () => {
-  return <AddOneBttn />;
+  return (
+    <>
+      <AddOneBttn />
+      <SubOneBttn />
+    </>
+  );
 };
 
 const Counter = () => {
@@ -65,6 +72,15 @@ const AddOneBttn = () => {
   return (
     <div>
       <button onClick={() => dispatch({ type: "ADD" })}>Increment</button>
+    </div>
+  );
+};
+
+const SubOneBttn = () => {
+  const { dispatch } = useMyContext();
+  return (
+    <div>
+      <button onClick={() => dispatch({ type: "SUB" })}>Subtract</button>
     </div>
   );
 };
